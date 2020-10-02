@@ -3,4 +3,4 @@ main.cpp
 cmake-build-debug/*
 .idea/*
 ./*/.vscode/*
-G4G/*.cpp
+G4G/*
