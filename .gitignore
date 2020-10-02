@@ -1,0 +1,6 @@
+CMakeLists.txt
+main.cpp
+cmake-build-debug/*
+.idea/*
+./*/.vscode
+G4G/*
