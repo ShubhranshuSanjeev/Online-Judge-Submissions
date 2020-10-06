@@ -23,11 +23,14 @@ int lca(int u, int v){
     if(h1 < h2){
         int tmp = u;
         u = v;
-        v = u;
+        v = tmp;
+        int tmp1 = h1;
+        h1 = h2;
+        h2 = tmp1;
     }
 
     while(h1 > h2){
-        u = u>>1;
+        u = (u>>1);
         h1 = h1-1;
     }
 
@@ -44,7 +47,7 @@ int lca(int u, int v){
 
 
     int lca_color = lca_h&1 ? root : root^1;
-    // cout << lca_t << " " << lca_h << " " << u_h << " " << v_h << " " << lca_color << "\n";
+
     int ans = 0;
     if((type == 'b' && lca_color) || (type == 'r' && !lca_color)){
         ans = (int)ceil((u_h-lca_h+1)/2.0) + (int)ceil((v_h-lca_h+1)/2.0) - 1;
@@ -66,8 +69,7 @@ int main(){
             continue;
         }
         scanf("%d %d", &x, &y);
-        printf("%d ", lca(x,y));
+        printf("%d\n", lca(x,y));
     }
-    printf("\n");
     return 0;
 }
