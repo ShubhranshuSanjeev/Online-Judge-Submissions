@@ -16,5 +16,13 @@
 using namespace std;
 
 int main(){
+    int T, a, b, c;
+    scanf("%d", &T);
+    while(T--){
+        scanf("%d %d %d", &a, &b, &c);
+        int d = max(a, max(b, c));
+        printf("%d\n", d);
+    }
+
     return 0;
 }
