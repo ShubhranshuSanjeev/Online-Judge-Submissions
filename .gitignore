@@ -1,5 +1,9 @@
 CMakeLists.txt
 main.cpp
-cmake-build-debug/*
-.idea/*
-G4G/*
+cmake-build-debug/
+.idea/
+G4G/
+Hackerrank/
+.vscode/
+*.txt
+*.exe
