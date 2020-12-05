@@ -1,0 +1,80 @@
+#include <cstdio>
+#include <iostream>
+#include <cmath>
+#include <cstring>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <unordered_map>
+#include <map>
+#include <set>
+#include <bitset>
+#include <unordered_set>
+
+#define ll long long int
+#define pii pair<int,int>
+#define pll pair<ll, ll>
+
+#define vec1d(x) vector<x>
+#define vec2d(x) vector<vec1d(x)>
+#define vec3d(x) vector<vec2d(x)>
+#define vec4d(x) vector<vec3d(x)>
+
+#define ivec1d(x, n, v) vec1d(x)(n, v)
+#define ivec2d(x, n, m, v) vec2d(x)(n, ivec1d(x, m, v))
+#define ivec3d(x, n, m, k, v) vec3d(x)(n, ivec2d(x, m, k, v))
+#define ivec4d(x, n, m, k, l, v) vec4d(x)(n, ivec3d(x, m, k, l, v))
+
+#define FOR(i, st, ed) for(int i = int(st); i < int(ed); i++)
+#define divide(l, h, idx) int mid = (l + h)>>1, lc = idx<<1, rc = lc|1;
+using namespace std;
+
+const int MAX = 1000007;
+const int MOD = 1000000009;
+const int P = 11; 
+
+ll p_pow[MAX], hash_a, hash_b[MAX];
+
+int main(){
+    ios_base::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+    #endif
+
+    p_pow[0] = 1;
+    FOR(i, 1, MAX){
+        p_pow[i] = (p_pow[i-1]*P) % MOD;
+    }
+
+    int n;
+    string a, b;
+
+    while(cin >> n){
+        cin >> a >> b;
+        int len_b = (int)b.length();
+        memset(hash_b, 0, sizeof(hash_b));
+        hash_a = 0; hash_b[0] = 0;
+
+        FOR(i, 0, n) hash_a = (hash_a + (a[i]-'a'+1)*p_pow[i]) % MOD;
+        FOR(i, 0, len_b) hash_b[i+1] = (hash_b[i] + (b[i]-'a'+1) * p_pow[i]) % MOD;
+        
+        bool flag = true;
+        if(n <= len_b){
+            for(int i = 0; i+n-1 < len_b; i++) {
+                ll curr_h = (hash_b[i+n] + MOD - hash_b[i])%MOD;
+                if(curr_h == hash_a*p_pow[i]%MOD){
+                    cout << i << "\n";
+                    flag = false;
+                }
+            }
+        }
+
+        if(flag) cout << "\n\n";
+    }
+    return 0;
+}
