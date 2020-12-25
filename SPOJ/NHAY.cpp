@@ -32,7 +32,7 @@ using namespace std;
 
 const int MAX = 1000007;
 const int MOD = 1000000009;
-const int P = 11; 
+const int P = 11;
 
 ll p_pow[MAX], hash_a, hash_b[MAX];
 
@@ -62,7 +62,7 @@ int main(){
 
         FOR(i, 0, n) hash_a = (hash_a + (a[i]-'a'+1)*p_pow[i]) % MOD;
         FOR(i, 0, len_b) hash_b[i+1] = (hash_b[i] + (b[i]-'a'+1) * p_pow[i]) % MOD;
-        
+
         bool flag = true;
         if(n <= len_b){
             for(int i = 0; i+n-1 < len_b; i++) {

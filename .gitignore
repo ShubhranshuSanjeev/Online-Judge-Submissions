@@ -3,7 +3,6 @@ main.cpp
 cmake-build-debug/
 .idea/
 G4G/
-Hackerrank/
 .vscode/
 *.txt
 *.exe
