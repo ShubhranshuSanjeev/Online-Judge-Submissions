@@ -31,7 +31,7 @@
 using namespace std;
 
 const int MAX = 100007;
-vec2d(int) adj, radj;
+vec2d(int) adj;
 vec1d(int) visited, finished_nodes;
 
 void dfs1(int u){
@@ -69,7 +69,6 @@ int main(){
         cin >> N >> M;
 
         adj.assign(N+1, vec1d(int)());
-        radj.assign(N+1, vec1d(int)());
         visited.assign(N+1, 0);
         finished_nodes.clear();
 
@@ -77,7 +76,6 @@ int main(){
         FOR(i, 0, M){
             cin >> u >> v;
             adj[u].emplace_back(v);
-            radj[v].emplace_back(u);
         }
 
         FOR(i, 1, N+1){
